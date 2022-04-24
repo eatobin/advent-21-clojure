@@ -22,8 +22,11 @@
 
 (def t1 (map #(reduce + %) gp1))
 
-(def t2 (map #(reduce + %) gp2))
+(def t9 (map #(reduce + %) gp2))
 
-(reduce + (map #(if % 1 0) (map < t1 t2)))
+[foo bar baz]
+;; (def t2 (map #(reduce + %) gp2))
+
+;; (reduce + (map #(if % 1 0) (map < t1 t2)))
 
 ;; 1567
