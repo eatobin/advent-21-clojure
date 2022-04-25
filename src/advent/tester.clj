@@ -3,11 +3,11 @@
 
 ; part a
 (def v1 (->>
-          "resources/day01_21.txt"
-          (slurp)
-          (str/split-lines)
-          (map #(Integer/parseInt %))
-          (into [])))
+         "resources/day01_21.txt"
+         (slurp)
+         (str/split-lines)
+         (map #(Integer/parseInt %))
+         (into [])))
 
 (def v2 (into [] (rest v1)))
 
@@ -24,7 +24,7 @@
 
 (def t9 (map #(reduce + %) gp2))
 
-[foo bar baz]
+;; [foo bar baz]
 ;; (def t2 (map #(reduce + %) gp2))
 
 ;; (reduce + (map #(if % 1 0) (map < t1 t2)))
