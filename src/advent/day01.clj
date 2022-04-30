@@ -3,7 +3,7 @@
 
 ; part a
 (def v1 (->>
-          "resources/day01_21.txt"
+          "resources/day01.txt"
           (slurp)
           (str/split-lines)
           (map #(Integer/parseInt %))
