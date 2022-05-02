@@ -11,3 +11,16 @@
           (str/split-lines)
           (map #(str/split % #" "))
           (map manipulate)))
+
+(defn adder [[sh sv] [dir amt]]
+  (cond
+    (= dir :u) [sh (- sv amt)]
+    (= dir :d) [sh (+ sv amt)]
+    (= dir :f) [(+ sh amt) sv]
+    :else "Whoops!"))
+
+(def position (reduce adder [0 0] v1))
+
+(* (first position) (last position))
+
+;; 1989265
