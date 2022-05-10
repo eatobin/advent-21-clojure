@@ -24,3 +24,11 @@
 (* (first position) (last position))
 
 ;; 1989265
+
+; part b
+(defn adder-2 [[sh sv sa] [dir amt]]
+  (cond
+    (= dir :u) [sh sv (- sa amt)]
+    (= dir :d) [sh sv (+ sa amt)]
+    (= dir :f) [(+ sh amt) (+ sv (* sa amt)) sa]
+    :else "Whoops!"))
