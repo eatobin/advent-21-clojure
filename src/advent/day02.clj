@@ -32,3 +32,9 @@
     (= dir :d) [sh sv (+ sa amt)]
     (= dir :f) [(+ sh amt) (+ sv (* sa amt)) sa]
     :else "Whoops!"))
+
+(def position-2 (reduce adder-2 [0 0 0] v1))
+
+(* (position-2 0) (position-2 1))
+
+;; 2089174012
