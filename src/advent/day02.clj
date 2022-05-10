@@ -21,7 +21,7 @@
 
 (def position (reduce adder [0 0] v1))
 
-(* (first position) (last position))
+(* (position 0) (position 1))
 
 ;; 1989265
 
