@@ -27,3 +27,26 @@
 (reduce + (map #(if % 1 0) (map < t1 t2)))
 
 ;; 1567
+
+
+;; These are examples of how to view a transducer
+;; (https://stackoverflow.com/questions/26317325/can-someone-explain-clojure-transducers-to-me-in-simple-terms)
+(reduce + (filter odd? (map #(+ 2 %) (range 0 10))))
+
+(def xform1
+  (comp
+    (partial filter odd?)
+    (partial map #(+ 2 %))))
+(reduce + (xform1 (range 0 10)))
+
+(defn xform2 [xs]
+  (->> xs
+       (map #(+ 2 %))
+       (filter odd?)))
+(reduce + (xform2 (range 0 10)))
+
+(def xform3
+  (comp
+    (map #(+ 2 %))
+    (filter odd?)))
+(transduce xform3 + (range 0 10))
