@@ -2,6 +2,13 @@
   (:require [clojure.string :as str]))
 
 ; part a
+;(def v1 (->>
+;          "resources/day01.txt"
+;          (slurp)
+;          (str/split-lines)
+;          (map #(Integer/parseInt %))
+;          (into [])))
+
 (def slurped-split (str/split-lines
                      (slurp "resources/day01.txt")))
 
