@@ -2,12 +2,13 @@
   (:require [clojure.string :as str]))
 
 ; part a
-(def v1 (->>
-          "resources/day01.txt"
-          (slurp)
-          (str/split-lines)
-          (map #(Integer/parseInt %))
-          (into [])))
+(def slurped-split (str/split-lines
+                     (slurp "resources/day01.txt")))
+
+(def xform
+  (map #(Integer/parseInt %)))
+
+(def v1 (transduce xform conj slurped-split))
 
 (def v2 (into [] (rest v1)))
 
@@ -30,7 +31,11 @@
 
 
 ;; These are examples of how to view a transducer
+
 ;; (https://stackoverflow.com/questions/26317325/can-someone-explain-clojure-transducers-to-me-in-simple-terms)
+
+;; https://clojure.org/reference/transducers#_transduce
+
 (reduce + (filter odd? (map #(+ 2 %) (range 0 10))))
 
 (def xform1
@@ -50,3 +55,15 @@
     (map #(+ 2 %))
     (filter odd?)))
 (transduce xform3 + (range 0 10))
+
+;; (transduce xform f coll)
+;; (transduce xform f init coll)
+
+(def xf (comp (filter odd?) (map inc)))
+(transduce xf + (range 5))
+;; => 6
+(transduce xf + 100 (range 5))
+;; => 106
+
+;; The composed xf transducer will be invoked left-to-right with a final call to the reducing function f.
+;; In the last example, input values will be filtered, then incremented, and finally summed.
