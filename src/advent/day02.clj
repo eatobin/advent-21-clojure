@@ -6,11 +6,11 @@
   [(keyword (subs dir 0 1)) (Integer/parseInt amt)])
 
 (def v1 (->>
-          "resources/day02.txt"
-          (slurp)
-          (str/split-lines)
-          (map #(str/split % #" "))
-          (map manipulate)))
+         "resources/day02.txt"
+         (slurp)
+         (str/split-lines)
+         (map #(str/split % #" "))
+         (map manipulate)))
 
 (defn adder [[sh sv] [dir amt]]
   (cond
@@ -21,7 +21,7 @@
 
 (def position (reduce adder [0 0] v1))
 
-(* (position 0) (position 1))
+(comment (* (position 0) (position 1)))
 
 ;; 1989265
 
@@ -35,6 +35,6 @@
 
 (def position-2 (reduce adder-2 [0 0 0] v1))
 
-(* (position-2 0) (position-2 1))
+(comment (* (position-2 0) (position-2 1)))
 
 ;; 2089174012
