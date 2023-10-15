@@ -10,7 +10,7 @@
 ;          (into [])))
 
 (def slurped-split (str/split-lines
-                     (slurp "resources/day01.txt")))
+                    (slurp "resources/day01.txt")))
 
 (def xform
   (map #(Integer/parseInt %)))
@@ -47,8 +47,8 @@
 
 (def xform1
   (comp
-    (partial filter odd?)
-    (partial map #(+ 2 %))))
+   (partial filter odd?)
+   (partial map #(+ 2 %))))
 (reduce + (xform1 (range 0 10)))
 
 (defn xform2 [xs]
@@ -59,8 +59,8 @@
 
 (def xform3
   (comp
-    (map #(+ 2 %))
-    (filter odd?)))
+   (map #(+ 2 %))
+   (filter odd?)))
 (transduce xform3 + (range 0 10))
 
 ;; (transduce xform f coll)
