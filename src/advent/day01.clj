@@ -2,20 +2,24 @@
   (:require [clojure.string :as str]))
 
 ; part a
-;(def v1 (->>
-;          "resources/day01.txt"
-;          (slurp)
-;          (str/split-lines)
-;          (map #(Integer/parseInt %))
-;          (into [])))
+(comment (def v1 (->>
+                  "resources/day01.txt"
+                  (slurp)
+                  (str/split-lines)
+                  (map #(Integer/parseInt %))
+                  (into []))))
 
 (def slurped-split (str/split-lines
                     (slurp "resources/day01.txt")))
 
-(def xform
-  (map #(Integer/parseInt %)))
+(comment
+  slurped-split
+  :rcf)
 
-(def v1 (transduce xform conj slurped-split))
+;; (def xform
+;;   (map #(Integer/parseInt %)))
+
+;; (def v1 (transduce xform conj slurped-split))
 
 (def v2 (into [] (rest v1)))
 
